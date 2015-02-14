@@ -1,4 +1,4 @@
-# lamp (d'un m qui veut dire Maria)
+# lamp (where M means Maria)
 # Pour Debian Wheezy
 #
 # VERSION               140215
@@ -10,33 +10,35 @@ MAINTAINER Nico Dewaele "nico@adminrezo.fr"
 
 ENV DEBIAN_FRONTEND noninteractive
 
-# Depots, mises a jour et installs de Apache/PHP5
+# Repos, upgrades, installs Apache/PHP5
 
 RUN (apt-get update && apt-get upgrade -y -q && apt-get dist-upgrade -y -q && apt-get -y -q autoclean && apt-get -y -q autoremove)
 RUN apt-get update && apt-get install -y -q pwgen inotify-tools python-software-properties apache2 libapache2-mod-php5 php5-cli php5-mysql supervisor
 
 
-# Installation de Maria
+# Install MariaDB & Adminer
 
 RUN apt-key adv --recv-keys --keyserver keyserver.ubuntu.com 0xcbcb082a1bb943db
 RUN add-apt-repository 'deb http://mirror6.layerjet.com/mariadb/repo/10.0/debian wheezy main'
-RUN apt-get update && apt-get install -y mariadb-server mariadb-common
+RUN apt-get update && apt-get install -y mariadb-server mariadb-common adminer
 
-# Config de Apache
+# Apache config
 
 ENV APACHE_RUN_USER www-data
 ENV APACHE_RUN_GROUP www-data
 ENV APACHE_LOG_DIR /var/log/apache2
+ADD security /etc/apache2/conf.d/security
+ADD ssl.conf /etc/apache2/mods-available/ssl.conf
 
 
-# Verification de PHP
+# PHP info
 
 ADD info.php /var/www/info.php
 ADD index.html /var/www/index.html
 RUN chown www-data.www-data -R /var/www/
 
 
-# Demarrage des services
+# Starting services
 
 RUN mkdir -p /var/log/supervisor
 ADD supervisor-lamp.conf /etc/supervisor/conf.d/supervisor-lamp.conf

@@ -12,10 +12,8 @@ No more, no less :
 
 ## MariaDB password
 
-Maybe you should change MariaDB root password :
+The default MariaDB root password is the marvellous 'MariaDBIsGoodForYou!'.
+`docker run -d adminrezo/lamp`
 
-```
-`docker run -e "mpwd=AsTrOnGpAsSwOrD" -d adminrezo/lamp`
-passwd=`pwgen 8 1` && echo "Nouveau mot de passe : $passwd"
-mysql -uroot -e "UPDATE user SET password=PASSWORD('$passwd') WHERE user='root';flush privileges;" mysql
-```
+You can change it if you don't like this one :
+`docker run -e "mariapw=AsTrOnGpAsSwOrD" -d adminrezo/lamp`
