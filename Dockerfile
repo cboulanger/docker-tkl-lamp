@@ -1,4 +1,4 @@
-# lamp (where M means Maria)
+# docker-lamp (where M means Maria)
 # Pour Debian Wheezy
 #
 # VERSION               140215
