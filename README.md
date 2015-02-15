@@ -8,12 +8,15 @@ Debian Gnu/**L**inux
 ## Start :
 
 No more, no less :
-`docker run -d adminrezo/lamp`
+
+`docker run -d adminrezo/docker-lamp`
 
 ## MariaDB password
 
 The default MariaDB root password is the marvellous 'MariaDBIsGoodForYou!'.
-`docker run -d adminrezo/lamp`
+
+`docker run -d adminrezo/docker-lamp`
 
 You can change it if you don't like this one :
+
 `docker run -e "mariapw=AsTrOnGpAsSwOrD" -d adminrezo/lamp`
