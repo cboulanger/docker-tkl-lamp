@@ -22,8 +22,10 @@ RUN apt-get update && apt-get install -y -q pwgen apache2 libapache2-mod-php5 ph
 ENV APACHE_RUN_USER www-data
 ENV APACHE_RUN_GROUP www-data
 ENV APACHE_LOG_DIR /var/log/apache2
-ADD security /etc/apache2/conf.d/security
+ADD security /etc/apache2/conf-available/security.conf
 ADD ssl.conf /etc/apache2/mods-available/ssl.conf
+RUN a2enmod ssl
+RUN a2ensite default-ssl
 
 
 # PHP info
