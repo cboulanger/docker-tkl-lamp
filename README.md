@@ -1,22 +1,5 @@
-# LAMP
+# Enhanced Turnkeylinux-LAMP image
 
-Debian Gnu/**L**inux
-**A**pache 2
-**M**ariaDB
-**P**HP 5
+see https://www.turnkeylinux.org/lampstack
 
-## Start :
-
-No more, no less :
-
-`docker run -d adminrezo/docker-lamp`
-
-## MariaDB password
-
-The default MariaDB root password is the marvellous 'MariaDBIsGoodForYou!'.
-
-`docker run -d adminrezo/docker-lamp`
-
-You can change it if you don't like this one :
-
-`docker run -e "mariapw=AsTrOnGpAsSwOrD" -d adminrezo/lamp`
+The code has been taken from https://bitbucket.org/adminrezo/docker-lamp and modified. TLKL uses MySql instead of MariaDB.
