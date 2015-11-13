@@ -1,7 +1,7 @@
 # A LAMP image based on Turnkeylinux
 # forked from adminrezo/docker-lamp
 
-FROM turnkeylinux/lamp-13.0
+FROM turnkeylinux/lamp-14.0
 MAINTAINER Christian Boulanger "info@bibliograph.org"
 
 ENV DEBIAN_FRONTEND noninteractive
